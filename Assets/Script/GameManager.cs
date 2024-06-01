@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private Score _score;
     [SerializeField] private GameObject _yellowCube;
     [SerializeField] private Transform _start;
     [SerializeField] private Transform _goal;
@@ -9,6 +10,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         CreateCube();
+        _score.SetUp();
     }
 
     private void CreateCube()
@@ -20,12 +22,11 @@ public class GameManager : MonoBehaviour
 
         for (var i = 0; i < distance; i += 50)
         {
-            if (i != 0)
-            {
-                var spawnPos = startPos + dic * i;
-                spawnPos.y += 2;
-                Instantiate(_yellowCube, spawnPos, Quaternion.identity);
-            }
+            if (i == 0) continue;
+            var spawnPos = startPos + dic * i;
+            spawnPos.y += 2;
+            spawnPos.x += Random.Range(-50,50);
+            Instantiate(_yellowCube, spawnPos, Quaternion.identity);
         }
     }
 }
