@@ -10,7 +10,7 @@ public class Move : MonoBehaviour
     // 移動方向を初期化
     private Vector3 _moveDirection = Vector3.zero;
     public Rigidbody Rb { get; private set; }
-    private int _currentLane = 1; // 現在のレーン（0: 左、1: 中央、2: 右）
+    private int _currentLane = 1; 
     [SerializeField] private float _laneWidth = 50.0f; // レーンの幅
 
     private void Awake()
