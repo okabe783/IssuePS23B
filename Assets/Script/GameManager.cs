@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
         _score.SetUp();
     }
 
+    //Cubeを生成する
     private void CreateCube()
     {
         var startPos = _start.position;
@@ -25,7 +26,9 @@ public class GameManager : MonoBehaviour
             if (i == 0) continue;
             var spawnPos = startPos + dic * i;
             spawnPos.y += 2;
-            spawnPos.x += Random.Range(-50,50);
+            if (i != 1)
+                spawnPos.x += Random.Range(-50, 101) / 50 * 50;
+
             Instantiate(_yellowCube, spawnPos, Quaternion.identity);
         }
     }

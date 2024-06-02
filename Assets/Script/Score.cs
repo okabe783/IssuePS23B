@@ -10,4 +10,11 @@ public class Score : MonoBehaviour
     {
         _scoreText.text = $"Score {_score}";
     }
+
+    //Scoreを更新
+    public void ScoreUp()
+    {
+        _score++;
+        _scoreText.text = $"Score {_score}";
+    }
 }
