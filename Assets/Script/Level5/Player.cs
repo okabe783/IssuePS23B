@@ -3,13 +3,13 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private GameObject _bullet;
-    private Vector3 _muzzle;
+    private Transform _muzzle;
     public float Life { get; set; } = 5;
 
     private void Start()
     {
         //親のTransform オブジェクトから見た相対的な位置
-        _muzzle = transform.Find("Muzzle").localPosition;
+        _muzzle = transform.Find("Muzzle");
     }
 
     private void Update()
@@ -20,6 +20,6 @@ public class Player : MonoBehaviour
 
     private void CreateBullet()
     {
-        Instantiate(_bullet, transform.position + _muzzle, Quaternion.identity);
+        Instantiate(_bullet, _muzzle.transform.position, _muzzle.transform.rotation);
     }
 }

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 /// <summary>Cameraがキャラクターに追従するためのScript</summary>
-public class Camera : MonoBehaviour
+public class CameraInput : MonoBehaviour
 {
     [SerializeField] private Transform _target; 
     [SerializeField] private float _followSpeed = 2.0f; // カメラの追従速度
