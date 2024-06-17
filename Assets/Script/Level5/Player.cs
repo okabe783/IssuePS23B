@@ -4,6 +4,8 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private GameObject _bullet;
     private Vector3 _muzzle;
+    public float Life { get; set; } = 5;
+
     private void Start()
     {
         //親のTransform オブジェクトから見た相対的な位置
