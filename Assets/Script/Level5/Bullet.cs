@@ -11,10 +11,10 @@ public class Bullet : MonoBehaviour
         var enemies = FindObjectsOfType<Enemy>();
         foreach (var enemy in enemies)
         {
-            var enemyPosition = enemy.transform.position;
-            var bulletPosition = transform.position;
+            var bulletBounds = new Bounds(transform.position, Vector3.one);
+            var enemyPos = enemy.transform.position;
            //削除
-            if (Vector3.Distance(enemyPosition, bulletPosition) < 0.5f)
+            if (bulletBounds.Contains(enemyPos))
             {
                 Destroy(gameObject);
                 enemy.Life -= 1;

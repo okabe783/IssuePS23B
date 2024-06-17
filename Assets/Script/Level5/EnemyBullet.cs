@@ -15,14 +15,14 @@ public class EnemyBullet : MonoBehaviour
     private void Update()
     {
         transform.Translate(-_speed * Time.deltaTime, 0, 0);
-
-        var distance = Vector3.Distance(transform.position, _player.transform.position);
-
-        if (distance <= 1)
+        
+        var bulletBounds = new Bounds(transform.position, Vector3.one);
+        var playerPos = _player.transform.position;
+        
+        if (bulletBounds.Contains(playerPos))
         {
             Destroy(gameObject);
             _playerLife.Life -= 1;
-            
         }
     }
 }
