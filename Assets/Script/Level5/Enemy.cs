@@ -1,13 +1,19 @@
+using System;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private GameObject _player;
+    private Player _player;
     [SerializeField] private float _searchArea = 100.0f;
     [SerializeField] private GameObject _enemyBullet;
     [SerializeField] private GameObject _enemyMuzzle;
     private float _timer;
     public float Life { get; set; } = 3;
+
+    private void Start()
+    {
+        _player = FindObjectOfType<Player>();
+    }
 
     private void Update()
     {
