@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1554177559474756705}
   - component: {fileID: 6958647330570120524}
-  - component: {fileID: 3909380709323074304}
+  - component: {fileID: 9222198560033990942}
   m_Layer: 0
   m_Name: EnemyBullet
   m_TagString: Untagged
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3909380709323074304
+--- !u!114 &9222198560033990942
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,6 +94,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 4914627865046520396}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b8961d68c274e943a16633994415a15, type: 3}
+  m_Script: {fileID: 11500000, guid: 1d81183cece5d9649ab032b2fe2846b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

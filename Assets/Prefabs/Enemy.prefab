@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1600244481439958381}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,7 +98,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72a75be87b71ae14388dde4e09db8a95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
   _searchArea: 10
   _enemyBullet: {fileID: 4914627865046520396, guid: 870e08dcb8c94614fb909b66e355ccbf, type: 3}
   _enemyMuzzle: {fileID: 5914040041545408551}
