@@ -10,52 +10,81 @@ public class Bullet : MonoBehaviour
 
     private void Start()
     {
+        _player = FindObjectOfType<Player>();
         if (CompareTag("PlayerBullet"))
-        {
             _isPlayerBullet = true;
-        }
+        else
+            _isPlayerBullet = false;
     }
 
     private void Update()
     {
-        if (_isPlayerBullet)
-        {
-            PlayerBullet();
-        }
-        else
-            EnemyBullet();
+        MoveBullet();
     }
 
-    private void PlayerBullet()
+    private void MoveBullet()
     {
-        transform.Translate(_speed * Time.deltaTime, 0, 0);
-        var enemies = FindObjectsOfType<Enemy>();
-        foreach (var enemy in enemies)
+        if (_isPlayerBullet)
         {
-            var bulletBounds = new Bounds(transform.position, Vector3.one);
-            var enemyPos = enemy.transform.position;
-            //削除
-            if (bulletBounds.Contains(enemyPos))
+            transform.Translate(_speed * Time.deltaTime, 0, 0);
+            var enemies = FindObjectsOfType<Enemy>();
+            foreach (var enemy in enemies)
             {
-                Debug.Log("aaa");
+                var bulletBounds = new Bounds(transform.position, Vector3.one);
+                var enemyPos = enemy.transform.position;
+                //削除
+                if (bulletBounds.Contains(enemyPos))
+                {
+                    Destroy(gameObject);
+                    enemy.Life -= 1;
+                    break;
+                }
+            }
+        }
+        else
+        {
+            transform.Translate(-_speed * Time.deltaTime, 0, 0);
+
+            var bulletBounds = new Bounds(transform.position, Vector3.one);
+            var playerPos = _player.transform.position;
+        
+            if (bulletBounds.Contains(playerPos))
+            {
                 Destroy(gameObject);
-                enemy.Life -= 1;
-                break;
+                _player.Life -= 1;
             }
         }
     }
 
-    private void EnemyBullet()
-    {
-        transform.Translate(-_speed * Time.deltaTime, 0, 0);
-
-        var bulletBounds = new Bounds(transform.position, Vector3.one);
-        var playerPos = _player.transform.position;
-        
-        if (bulletBounds.Contains(playerPos))
-        {
-            Destroy(gameObject);
-            _player.Life -= 1;
-        }
-    }
+    // private void PlayerBullet()
+    // {
+    //     transform.Translate(_speed * Time.deltaTime, 0, 0);
+    //     var enemies = FindObjectsOfType<Enemy>();
+    //     foreach (var enemy in enemies)
+    //     {
+    //         var bulletBounds = new Bounds(transform.position, Vector3.one);
+    //         var enemyPos = enemy.transform.position;
+    //         //削除
+    //         if (bulletBounds.Contains(enemyPos))
+    //         {
+    //             Destroy(gameObject);
+    //             enemy.Life -= 1;
+    //             break;
+    //         }
+    //     }
+    // }
+    //
+    // private void EnemyBullet()
+    // {
+    //     transform.Translate(-_speed * Time.deltaTime, 0, 0);
+    //
+    //     var bulletBounds = new Bounds(transform.position, Vector3.one);
+    //     var playerPos = _player.transform.position;
+    //     
+    //     if (bulletBounds.Contains(playerPos))
+    //     {
+    //         Destroy(gameObject);
+    //         _player.Life -= 1;
+    //     }
+    // }
 }
